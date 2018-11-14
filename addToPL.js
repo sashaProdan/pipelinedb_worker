@@ -44,9 +44,9 @@ const addToPL = (msg) => {
     values = [data, timestamp, metadata];
   }
 
-	client.query(text, values, (err, res) => {
-		console.log(err ? err.stack : 'Success');
-	})
+  client.query(text, values, (err, res) => {
+  	console.log(err ? err.stack : 'Success');
+  })
 }
 
 module.exports = addToPL;
