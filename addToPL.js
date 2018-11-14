@@ -2,11 +2,11 @@ const { Client } = require('pg');
 const moment = require('moment');
 const INSERT = require('./pipelinedb_queries');
 
-const client = new Client({
-	user: 'sasha',
-	host: 'localhost',
-	database: 'sasha',
-	port: '5432',
+const client = new Client({ 
+  user: 'sasha',
+  host: 'localhost',
+  database: 'sasha',
+  port: '5432',
 }); 
 
 client.connect();
@@ -19,13 +19,13 @@ const addToPL = (msg) => {
   let values;
 
   if (eType === 'clicks'){
-	  let { target_node, buttons, x, y } = json; 
-	  text = INSERT.click;
-	  values = [target_node, buttons, x, y, timestamp, metadata];
+    let { target_node, buttons, x, y } = json; 
+    text = INSERT.click;
+    values = [target_node, buttons, x, y, timestamp, metadata];
   } else if (eType === 'link_clicks') {
   	let { linkText, targetURL } = json; 
-	  text = INSERT.link_click;
-	  values = [linkText, targetURL, timestamp, metadata];
+    text = INSERT.link_click;
+    values = [linkText, targetURL, timestamp, metadata];
   } else if (eType === 'mouse_moves') {
     let { x, y } = json;
     text = INSERT.mouse_move;
@@ -36,7 +36,6 @@ const addToPL = (msg) => {
     values = [key, timestamp, metadata];
   } else if (eType === 'pageview') {
     let { url, title } = json;
-
     text = INSERT.pageview;
     values = [url, title, timestamp, metadata];
   } else if (eType === 'form_submissions') {

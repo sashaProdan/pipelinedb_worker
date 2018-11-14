@@ -3,10 +3,7 @@ var all = require('bluebird').all;
 var basename = require('path').basename;
 var writeToPL = require('./addToPL');
 
-
-// const events = ['clicks', 'link_clicks', 'key_press', 'mouse_moves', 'pageview', 'form_submissions'];
-const events = ['clicks','link_clicks'];
-
+const events = ['clicks', 'link_clicks', 'key_press', 'mouse_moves', 'pageview', 'form_submissions'];
 
 amqp.connect('amqp://localhost').then(conn => {
   process.once('SIGINT', () => conn.close());
